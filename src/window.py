@@ -76,17 +76,18 @@ class LauncherWindow(Gtk.ApplicationWindow):
         print(f"{executed_command=}")
         error = ""
         try:
-            process = subprocess.Popen(
-                executed_command, stderr=subprocess.PIPE, text=True
-            )
-            _, error = process.communicate()
+            subprocess.Popen(executed_command, stderr=subprocess.PIPE, text=True)
         except Exception as e:
+            # ça c'est les exceptions au lancement de la commande
             error = str(e)
 
         if error != "":
-            dialog = Adw.MessageDialog(transient_for=self, heading="Error", body=error)
-            dialog.add_response("close", "Close")
-            dialog.present()
+            self.show_error_dialog(error)
+
+    def show_error_dialog(self, error):
+        dialog = Adw.MessageDialog(transient_for=self, heading="Error", body=error)
+        dialog.add_response("close", "Close")
+        dialog.present()
 
     def on_update_project(
         self, project: Project, entry_name: Gtk.Entry, entry_command: Gtk.Entry
