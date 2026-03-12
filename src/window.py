@@ -17,7 +17,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from gi.repository import Gtk
+from gi.repository import Gtk, Adw
 import subprocess
 import json
 import os
@@ -65,11 +65,28 @@ class LauncherWindow(Gtk.ApplicationWindow):
         )
 
     def on_start_project(self, command_entry: Gtk.Entry):
-        executed_command = ("flatpak-spawn --host " + command_entry.get_text()).split(
-            " "
-        )
+        executed_command = (
+            (
+                "flatpak-spawn --host "
+                if os.environ.get("FLATPAK_ID") is not None
+                else ""
+            )
+            + command_entry.get_text()
+        ).split(" ")
         print(f"{executed_command=}")
-        subprocess.Popen(executed_command)
+        error = ""
+        try:
+            process = subprocess.Popen(
+                executed_command, stderr=subprocess.PIPE, text=True
+            )
+            _, error = process.communicate()
+        except Exception as e:
+            error = str(e)
+
+        if error != "":
+            dialog = Adw.MessageDialog(transient_for=self, heading="Error", body=error)
+            dialog.add_response("close", "Close")
+            dialog.present()
 
     def on_update_project(
         self, project: Project, entry_name: Gtk.Entry, entry_command: Gtk.Entry
