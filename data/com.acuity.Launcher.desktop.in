@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=launcher
+Exec=launcher
+Icon=com.acuity.Launcher
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
+DBusActivatable=true

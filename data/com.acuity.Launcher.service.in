@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.acuity.Launcher
+Exec=@bindir@/launcher --gapplication-service
