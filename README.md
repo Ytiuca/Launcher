@@ -32,7 +32,7 @@ sudo ninja install
 
 ## Running
 
-You can run the application from your application menu or by running `com.acuity.Launcher` from the command line.
+You can run the application from your application menu or by running `launcher` from the command line.
 
 ## Contributing
 

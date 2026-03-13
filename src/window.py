@@ -1,6 +1,6 @@
 # window.py
 #
-# Copyright 2026 Romain
+# Copyright 2026 Acuity
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

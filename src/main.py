@@ -1,6 +1,6 @@
 # main.py
 #
-# Copyright 2026 Romain
+# Copyright 2026 Acuity
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -63,8 +63,8 @@ class LauncherApplication(Gtk.Application):
             program_name="launcher",
             logo_icon_name="com.acuity.Launcher",
             version="0.1.0",
-            authors=["Romain"],
-            copyright="© 2026 Romain",
+            authors=["Acuity"],
+            copyright="© 2026 Acuity",
         )
         # Translators: Replace "translator-credits" with your name/username, and optionally an email or URL.
         about.set_translator_credits(_("translator-credits"))
